@@ -1,0 +1,116 @@
+{
+  "__chrome|opera|edge|prod__manifest_version": 3,
+  "__chrome|opera|edge|dev__manifest_version": 2,
+
+  "__firefox__manifest_version": 2,
+
+  "name": "Express Executions",
+  "version": "0.0.0",
+
+  "icons": {
+    "16": "assets/icons/favicon-16.png",
+    "32": "assets/icons/favicon-32.png",
+    "48": "assets/icons/favicon-48.png",
+    "64": "assets/icons/favicon-64.png",
+    "128": "assets/icons/favicon-128.png"
+  },
+  "description": "Execution history and detail for AWS Step Functions express workflows",
+  "homepage_url": "https://github.com/zaccharles/step-functions-express-executions",
+  "short_name": "expressexecs",
+
+  "__chrome|opera|edge|prod__host_permissions": [
+    "*://*.console.aws.amazon.com/states/*"
+  ],
+
+  "__chrome|opera|edge|dev__permissions": [
+    "*://*.console.aws.amazon.com/states/*"
+  ],
+
+  "__firefox__permissions": ["*://*.console.aws.amazon.com/states/*"],
+
+  "__chrome|opera|edge|prod__content_security_policy": {
+    "sandbox": "sandbox allow-scripts; script-src 'self'; object-src 'self'"
+  },
+
+  "__chrome|opera|edge|dev__content_security_policy": "script-src 'self' http://localhost http://127.0.0.1; object-src 'self'",
+
+  "__firefox__content_security_policy": "script-src 'self'; object-src 'self'",
+
+  "__chrome|firefox__author": "zaccharles",
+  "__opera__developer": {
+    "name": "zaccharles"
+  },
+
+  "__firefox__applications": {
+    "gecko": {
+      "id": "{05da75ed-c1fa-41ef-92bd-544bce19f6b7}"
+    }
+  },
+
+  "__chrome__minimum_chrome_version": "88",
+  "__opera__minimum_opera_version": "74",
+
+  "__chrome|opera|edge|dev__browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icons/favicon-16.png",
+      "32": "assets/icons/favicon-32.png",
+      "48": "assets/icons/favicon-48.png",
+      "64": "assets/icons/favicon-64.png",
+      "128": "assets/icons/favicon-128.png"
+    },
+    "default_title": "Express Executions"
+  },
+
+  "__chrome|opera|edge|prod__action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icons/favicon-16.png",
+      "32": "assets/icons/favicon-32.png",
+      "48": "assets/icons/favicon-48.png",
+      "64": "assets/icons/favicon-64.png",
+      "128": "assets/icons/favicon-128.png"
+    },
+    "default_title": "Express Executions"
+  },
+
+  "__firefox__browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icons/favicon-16.png",
+      "32": "assets/icons/favicon-32.png",
+      "48": "assets/icons/favicon-48.png",
+      "64": "assets/icons/favicon-64.png",
+      "128": "assets/icons/favicon-128.png"
+    },
+    "default_title": "Express Executions",
+    "browser_style": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.console.aws.amazon.com/states/*"],
+      "include_globs": ["*.console.aws.amazon.com/states/*"],
+      "run_at": "document_start",
+      "js": ["js/contentScript.bundle.js"]
+    }
+  ],
+
+  "__dev__background": {
+    "scripts": [
+      "js/background.bundle.js"
+    ],
+    "__chrome|opera__persistent": false
+  },
+
+  "__dev__web_accessible_resources": [
+    "js/contentScriptMain.bundle.js"
+  ],
+
+  "__prod__web_accessible_resources": [
+    {
+      "resources": ["js/contentScriptMain.bundle.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
